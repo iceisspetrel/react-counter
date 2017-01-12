@@ -1,0 +1,34 @@
+.counter-key-board{
+    padding: 0 10px;
+}
+
+.counter-key-board .line{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.counter-key-board .line:first-child{
+    margin-top: 5px;
+}
+
+.counter-key-board .line .key{
+    display: inline-block;
+    width: 29px;
+    height: 29px;
+    text-align: center;
+    line-height: 29px;
+    font-weight: bold;
+    background-color: rgb(242, 242, 242);
+    border: 1px solid rgb(229, 229, 229);
+    cursor: pointer;
+    font-family: Verdana, Geneva, sans-serif;
+}
+
+.counter-key-board .line .key.long{
+    width: 70px;
+}
+
+.counter-key-board .line .key:active{
+    background-color: #FFF;
+}

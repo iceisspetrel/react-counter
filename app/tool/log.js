@@ -12,23 +12,23 @@ let dateToStr = (date) => {
 };
 class DevLog {
     constructor (...args) {
-        this.status = (process.env.NODE_ENV.trim() == 'production');
+        this.status = (process.env.NODE_ENV.trim() == 'dev');
     }
 
-    info (text) {
-        this.status && console.log(dateToStr(), '[LOG]', text);
+    info (...args) {
+        this.status && console.log(dateToStr(), '[LOG]', ...args);
     }
 
-    error (text) {
-        this.status && console.error(dateToStr(), '[ERROR]', text);
+    error (...args) {
+        this.status && console.error(dateToStr(), '[ERROR]', ...args);
     }
 
-    debug (text) {
-        this.status && console.debug(dateToStr(), '[DEBUG]', text);
+    debug (...args) {
+        this.status && console.debug(dateToStr(), '[DEBUG]', ...args);
     }
 
-    warn (text) {
-        this.status && console.warn(dateToStr(), '[WARN]', text);
+    warn (...args) {
+        this.status && console.warn(dateToStr(), '[WARN]', ...args);
     }
 }
 

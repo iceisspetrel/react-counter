@@ -10,3 +10,10 @@ body{
     background: url('../img/bg.jpg') no-repeat;
     background-size: cover;
 }
+
+#app{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}

@@ -2,15 +2,18 @@ var webpack = require('webpack'),
     path    = require('path'),
     ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-module.exports = {
+var __ENV__ = JSON.stringify(process.env.NODE_ENV) == JSON.stringify('production');
+console.log('===========', process.env.NODE_ENV, '__ENV__', __ENV__);
+
+var config = {
     entry : {
         app : path.resolve(__dirname, 'app', 'entry.js'),
         common : ['react', 'react-dom', './app/tool/log.js']
     },
     output : {
         path : path.resolve(__dirname, 'bundle'),
-        filename : '[name].js',
-        publicPath : '/bundle/'
+        filename : '[name].js'/*,
+        publicPath : './bundle/'*/
     },
     module : {
         loaders : [
@@ -20,7 +23,7 @@ module.exports = {
             },
             {
                 test : /\.(jpg|png)$/,
-                loader : 'url-loader?limit=8192&name=assets/[name]_[hash:8].[ext]'
+                loader : 'url-loader?limit=1024&name=assets/[name]_[hash:8].[ext]'
             },
             {
                 test : /\.(js|jsx)$/,
@@ -46,13 +49,18 @@ module.exports = {
             'ReactDOM' : 'react-dom'
         }),
         new ExtractTextPlugin('common.css'),
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-            }
-        }),
         new webpack.optimize.CommonsChunkPlugin({
             names : ['common']
         })
     ]
 }
+
+if(__ENV__){
+    config.plugins.push(new webpack.optimize.UglifyJsPlugin({
+        compress: {
+            warnings: false
+        }
+    }));
+}
+
+module.exports = config;

@@ -1,8 +1,10 @@
 require('./style/common.css');
 
-import Browser from './module/Browser.jsx';
+import CounterBox from './module/CounterBox.jsx';
 
 ReactDOM.render(
-    <Browser />,
+    <div className="app-root">
+        <CounterBox />
+    </div>,
     document.getElementById('app')
-)
+);
